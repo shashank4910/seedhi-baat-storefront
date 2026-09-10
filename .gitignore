@@ -1,0 +1,29 @@
+node_modules/
+.wrangler/
+
+# Local credentials and environment files
+.dev.vars*
+!.dev.vars.example
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+*.p12
+*.pfx
+
+# Generated build and OS files
+*.log
+*.tsbuildinfo
+.DS_Store
+
+# Raw local deployment transcripts (sanitized history is in logs/)
+/*-exit.txt
+/cloudflare-auth.txt
+/d1-create.txt
+/deploy-check.txt
+/kv-create.txt
+/r2-create.txt
+/remote-migration.txt
+/minimal-*.txt
+/production-deploy*.txt

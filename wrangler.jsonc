@@ -1,0 +1,29 @@
+{
+  "name": "books",
+  "main": "src/index.ts",
+  "compatibility_date": "2026-09-10",
+  "assets": {
+    "directory": "./public",
+    "binding": "ASSETS",
+    "run_worker_first": true
+  },
+  "d1_databases": [
+    {
+      "binding": "DB",
+      "database_name": "seedhi-baat-store",
+      "database_id": "21355d48-4f6a-4304-8196-7e295d7c9297",
+      "migrations_dir": "migrations"
+    }
+  ],
+  // R2 is intentionally omitted until it is enabled in the Cloudflare dashboard.
+  // Restore the EBOOKS binding before activating Razorpay checkout.
+  "vars": {
+    "STORE_NAME": "Seedhi Baat Guides",
+    "SUPPORT_EMAIL": "hello@hyred.in",
+    "DOWNLOAD_TTL_HOURS": "168",
+    "DOWNLOAD_LIMIT": "3",
+    "PRICE_SINGLE_PAISE": "19900",
+    "PRICE_LANGUAGE_BUNDLE_PAISE": "69900",
+    "PRICE_COMPLETE_BUNDLE_PAISE": "99900"
+  }
+}

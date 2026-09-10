@@ -1,0 +1,4 @@
+# Razorpay Test Mode credentials for local checkout.
+RAZORPAY_KEY_ID=rzp_test_replace_me
+RAZORPAY_KEY_SECRET=replace_me
+RAZORPAY_WEBHOOK_SECRET=replace_me

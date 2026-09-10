@@ -1,0 +1,37 @@
+Seedhi Baat storefront deployment history
+=========================================
+Date: 2026-09-10
+
+[OK] Storefront implemented for 10 Hindi/Hinglish PDF guides.
+[OK] Prices finalized: INR 199 single, INR 699 five-book set, INR 999 complete library.
+[OK] Support email configured as hello@hyred.in.
+[OK] Contextual checkout upsells implemented.
+[OK] Checkout-disabled onboarding state implemented.
+[OK] TypeScript, browser JavaScript, Wrangler dry run, D1 migration, catalog values, and 10 PDF mappings validated.
+[OK] Cloudflare OAuth authentication confirmed. No OAuth token is recorded in this log.
+[OK] D1 database seedhi-baat-store created in APAC.
+     Database ID: 21355d48-4f6a-4304-8196-7e295d7c9297
+[OK] Remote D1 migration checked; no migration remains pending.
+[BLOCKED] R2 bucket seedhi-baat-ebooks was not created.
+          Cloudflare response code: 10042 (R2 must be enabled in the dashboard).
+[INFO] KV namespace EBOOKS was created while evaluating a free storage fallback.
+       Namespace ID: 409592ed244f4c96affc8235d9a65863
+       Status: unused and not bound; current code expects R2, not KV.
+[OK] Cloudflare workers.dev account subdomain set to seedhibaat.workers.dev.
+[OK] Final Worker deployed with name books.
+     URL: https://books.seedhibaat.workers.dev
+     Version ID: 5ff35be9-7649-4d73-b4d4-41fc637502b8
+[OK] Live homepage fetched successfully.
+[OK] Live /api/catalog returned the configured catalog and support email.
+[OK] Live /api/health returned:
+     {"ok":true,"checkoutConfigured":false,"webhookConfigured":false}
+
+Current launch state
+--------------------
+The catalog is public and safe to preview. Payments and PDF delivery are not live.
+Do not configure Razorpay secrets until private R2 storage is enabled, bound, populated,
+and an end-to-end Test Mode purchase/download has passed.
+
+Raw terminal captures are intentionally excluded from Git because they contain local machine
+paths, stale deployment attempts, and personal account metadata. This file preserves the
+operational facts without credentials or local identity details.
