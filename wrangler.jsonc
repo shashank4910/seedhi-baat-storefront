@@ -15,8 +15,12 @@
       "migrations_dir": "migrations"
     }
   ],
-  // R2 is intentionally omitted until it is enabled in the Cloudflare dashboard.
-  // Restore the EBOOKS binding before activating Razorpay checkout.
+  "kv_namespaces": [
+    {
+      "binding": "EBOOKS",
+      "id": "409592ed244f4c96affc8235d9a65863"
+    }
+  ],
   "vars": {
     "STORE_NAME": "Seedhi Baat Guides",
     "SUPPORT_EMAIL": "hello@hyred.in",

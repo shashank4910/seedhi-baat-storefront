@@ -4,21 +4,23 @@ A Cloudflare Worker storefront for ten Hindi/Hinglish psychology-guide PDFs. Raz
 
 ## Current deployment
 
-- **Public preview:** https://books.seedhibaat.workers.dev
+- **Public site:** https://books.seedhibaat.workers.dev
 - **Support:** `hello@hyred.in`
-- **Checkout:** disabled until Razorpay credentials and private PDF storage are ready
+- **Latest Worker version:** `e0ddbda2-c5c3-4df3-a6dc-1c4f42837db4`
+- **Private downloads:** ready (`downloadsConfigured: true`)
+- **Checkout:** active in Razorpay **Test Mode** (`checkoutConfigured: true`, `webhookConfigured: true`)
 - **Detailed handoff:** [`PROJECT_CONTEXT.md`](PROJECT_CONTEXT.md)
 - **Deployment history:** [`logs/deployment-history.txt`](logs/deployment-history.txt)
 
-The catalog is live, but payments and production PDF delivery are intentionally not active. Do not add Razorpay secrets until R2 is enabled, bound, populated, and tested.
+The catalog, private PDF storage, checkout, and webhook are all live in Test Mode. Server-side order creation is verified. Remaining before real sales: complete one full browser Test Mode purchase, confirm webhook delivery, then switch to Live-mode Razorpay credentials. The Worker fails closed if any of `RAZORPAY_KEY_ID`, `RAZORPAY_KEY_SECRET`, or `RAZORPAY_WEBHOOK_SECRET` is missing.
 
 ## Architecture
 
 - **Cloudflare Workers static assets:** responsive storefront on free `workers.dev` hosting.
 - **Worker API:** catalog, Razorpay order creation, payment verification, webhook handling, access recovery, and protected downloads.
 - **D1:** order status, deduplicated webhooks, hashed recovery/download tokens, and per-file download counts.
-- **Private R2 (pending):** PDFs remain outside `public/` and will have no public object URL.
-- **Razorpay Standard Checkout (pending):** UPI/cards/netbanking according to merchant eligibility.
+- **Private Cloudflare KV:** the server-only `EBOOKS` binding stores all ten PDFs with no public object URLs.
+- **Razorpay Standard Checkout (pending activation):** UPI/cards/netbanking according to merchant eligibility.
 
 The canonical PDFs remain outside this repository under `../../outputs/Ebooks_PDF/{Hinglish,Hindi}`. `scripts/upload-ebooks.mjs` validates and uploads exactly five PDFs per language using allowlisted keys.
 
@@ -51,43 +53,37 @@ npm run dev
 
 ## Cloudflare deployment
 
-The D1 database already exists and its ID is configured in `wrangler.jsonc`. For a fresh account or recreation, authenticate and create D1 first:
+The production resources are already configured:
+
+- D1 database: `seedhi-baat-store` (`21355d48-4f6a-4304-8196-7e295d7c9297`)
+- Private KV binding: `EBOOKS` (`409592ed244f4c96affc8235d9a65863`)
+- KV inventory: ten allowlisted PDFs plus `__catalog_ready__=10`
+- Production health: `downloadsConfigured: true`
+
+R2 is not required for launch. An earlier R2 attempt was unavailable with Cloudflare code `10042`, so the Worker and uploader were migrated to private KV.
+
+For a new deployment, authenticate, apply the database schema, upload the PDFs, validate, and deploy:
 
 ```powershell
 npx wrangler login
 npx wrangler whoami
-npx wrangler d1 create seedhi-baat-store
+npm run db:migrate:remote
+npm run upload:ebooks
+npm run check
+npm run deploy
 ```
-
-R2 is not currently enabled. Before activating checkout:
-
-1. Enable R2 in Cloudflare.
-2. Create the private bucket; do **not** enable public access:
-   ```powershell
-   npx wrangler r2 bucket create seedhi-baat-ebooks
-   ```
-3. Restore this binding in `wrangler.jsonc`:
-   ```json
-   "r2_buckets": [
-     {
-       "binding": "EBOOKS",
-       "bucket_name": "seedhi-baat-ebooks"
-     }
-   ]
-   ```
-4. Apply the schema, upload PDFs, check, and deploy:
-   ```powershell
-   npm run db:migrate:remote
-   npm run upload:ebooks
-   npm run check
-   npm run deploy
-   ```
-
-Cloudflare Workers and D1 have free tiers. R2 has a free usage allowance, but Cloudflare may require billing details to enable it; confirm the current account terms before launch.
 
 ## Razorpay activation
 
-Complete legitimate merchant onboarding and use Test Mode first. Add secrets only after R2 is operational:
+Complete legitimate merchant onboarding and use Test Mode first. Private storage is ready, but the following Worker secrets are currently absent:
+
+```text
+RAZORPAY_KEY_ID
+RAZORPAY_KEY_SECRET
+RAZORPAY_WEBHOOK_SECRET
+```
+
+Install them in Cloudflare under **Workers & Pages → books → Settings → Variables and Secrets**, or use:
 
 ```powershell
 npx wrangler secret put RAZORPAY_KEY_ID
@@ -95,7 +91,7 @@ npx wrangler secret put RAZORPAY_KEY_SECRET
 npx wrangler secret put RAZORPAY_WEBHOOK_SECRET
 ```
 
-Configure the webhook URL:
+Never put secret values in Git, logs, source files, or chat. Configure this Razorpay **Test Mode** webhook URL:
 
 ```text
 https://books.seedhibaat.workers.dev/api/webhooks/razorpay
@@ -108,7 +104,7 @@ Use the same webhook secret in Razorpay and `RAZORPAY_WEBHOOK_SECRET`. Subscribe
 - `payment.refunded`
 - `refund.processed`
 
-After a Test Mode checkout, verify payment, webhook delivery, purchase recovery, a real PDF download, expiry behavior, and the download limit. Use live credentials only after the full test passes.
+After installing the secrets, require `/api/health` to report all three readiness flags as `true`. Then complete one real Test Mode checkout and verify capture, webhook delivery, grant creation, purchase recovery, an actual PDF download, expiry behavior, and the download limit. Use live credentials only after the complete test passes.
 
 ## Security behavior
 
@@ -121,5 +117,6 @@ After a Test Mode checkout, verify payment, webhook delivery, purchase recovery,
 - Recovery and download secrets are stored only as SHA-256 hashes.
 - Links default to seven days and three downloads per purchased file.
 - Storage keys come from a fixed catalog; request paths cannot select arbitrary objects.
+- Order creation requires the complete private catalog and all three Razorpay secrets.
 
-Do not accept live orders until Razorpay onboarding, private R2 delivery, webhook handling, and an end-to-end test payment have all been verified.
+Do not accept live orders until Razorpay onboarding, private KV delivery, webhook handling, and an end-to-end Test Mode payment have all been verified.

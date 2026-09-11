@@ -4,9 +4,9 @@ import { fileURLToPath } from "node:url";
 import path from "node:path";
 
 const sourceRoot = fileURLToPath(new URL("../../../outputs/Ebooks_PDF", import.meta.url));
-const bucket = process.env.R2_BUCKET || "seedhi-baat-ebooks";
+const namespaceId = process.env.KV_NAMESPACE_ID || "409592ed244f4c96affc8235d9a65863";
 const dryRun = process.argv.includes("--dry-run");
-const runner = process.platform === "win32" ? "npx.cmd" : "npx";
+const wranglerCli = fileURLToPath(new URL("../node_modules/wrangler/wrangler-dist/cli.js", import.meta.url));
 const files = [];
 
 for (const language of ["Hinglish", "Hindi"]) {
@@ -22,18 +22,49 @@ for (const language of ["Hinglish", "Hindi"]) {
   }
 }
 
-console.log(`${dryRun ? "Checking" : "Uploading"} ${files.length} protected ebooks to ${bucket}:`);
+function runWrangler(args) {
+  const result = spawnSync(process.execPath, [wranglerCli, ...args], {
+    stdio: "inherit",
+    shell: false,
+    env: { ...process.env, CI: "true" },
+  });
+  if (result.status !== 0) process.exit(result.status ?? 1);
+}
+
+console.log(`${dryRun ? "Checking" : "Uploading"} ${files.length} protected ebooks to private KV:`);
 for (const file of files) {
   const sizeMb = (statSync(file.source).size / 1024 / 1024).toFixed(2);
   console.log(`- ${file.key} (${sizeMb} MB)`);
   if (dryRun) continue;
 
-  const result = spawnSync(
-    runner,
-    ["wrangler", "r2", "object", "put", `${bucket}/${file.key}`, "--file", file.source, "--remote"],
-    { stdio: "inherit", shell: false },
-  );
-  if (result.status !== 0) process.exit(result.status ?? 1);
+  runWrangler([
+    "kv",
+    "key",
+    "put",
+    file.key,
+    "--namespace-id",
+    namespaceId,
+    "--path",
+    file.source,
+    "--remote",
+  ]);
 }
 
-console.log(dryRun ? "All source PDFs are present and mapped." : "All ebooks uploaded to the private R2 bucket.");
+if (!dryRun) {
+  runWrangler([
+    "kv",
+    "key",
+    "put",
+    "__catalog_ready__",
+    String(files.length),
+    "--namespace-id",
+    namespaceId,
+    "--remote",
+  ]);
+}
+
+console.log(
+  dryRun
+    ? "All source PDFs are present and mapped."
+    : "All ebooks uploaded to private KV and the catalog-ready marker was written.",
+);

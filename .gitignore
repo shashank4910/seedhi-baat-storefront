@@ -17,13 +17,22 @@ node_modules/
 *.tsbuildinfo
 .DS_Store
 
-# Raw local deployment transcripts (sanitized history is in logs/)
+# Raw local deployment transcripts and scratch output (sanitized history is in logs/)
 /*-exit.txt
+/*-out.txt
 /cloudflare-auth.txt
 /d1-create.txt
 /deploy-check.txt
-/kv-create.txt
-/r2-create.txt
+/deploy-out.txt
+/git-state.txt
+/activation-*.txt
+/kv-*.txt
+/razorpay-secret-*.txt
+/r2-*.txt
 /remote-migration.txt
 /minimal-*.txt
 /production-deploy*.txt
+/test-order*.txt
+/verify-order*.txt
+/test-*.ps1
+/verify-*.ps1

@@ -3,7 +3,7 @@ import { hmacHex, randomToken, sha256Hex, timingSafeEqual } from "./crypto";
 
 interface Env {
   DB: D1Database;
-  EBOOKS: R2Bucket;
+  EBOOKS: KVNamespace;
   ASSETS: Fetcher;
   RAZORPAY_KEY_ID?: string;
   RAZORPAY_KEY_SECRET?: string;
@@ -101,6 +101,13 @@ function requireRazorpay(env: Env): { keyId: string; keySecret: string } {
   return { keyId: env.RAZORPAY_KEY_ID, keySecret: env.RAZORPAY_KEY_SECRET };
 }
 
+async function requireEbookStorage(env: Env): Promise<void> {
+  const readyCount = await env.EBOOKS.get("__catalog_ready__");
+  if (readyCount !== String(BOOKS.length)) {
+    throw new HttpError(503, "Downloads are being configured. Please try again shortly.", "downloads_unavailable");
+  }
+}
+
 async function readJson<T>(request: Request): Promise<T> {
   const length = Number(request.headers.get("content-length") ?? "0");
   if (length > 16_384) throw new HttpError(413, "Request is too large.");
@@ -148,6 +155,10 @@ async function razorpayRequest<T>(env: Env, path: string, init: RequestInit = {}
 }
 
 async function createOrder(request: Request, env: Env): Promise<Response> {
+  await requireEbookStorage(env);
+  if (!configured(env.RAZORPAY_WEBHOOK_SECRET)) {
+    throw new HttpError(503, "Payment verification is being configured. Please try again shortly.", "checkout_unavailable");
+  }
   const body = await readJson<{ productId?: unknown; email?: unknown; name?: unknown }>(request);
   if (typeof body.productId !== "string") throw new HttpError(400, "Choose a valid product.", "invalid_product");
   const product = findProduct(body.productId, env);
@@ -224,6 +235,7 @@ async function issueGrant(env: Env, order: OrderRow): Promise<{
   expiresAt: number;
   downloads: Array<{ id: string; title: string; language: string; url: string }>;
 }> {
+  await requireEbookStorage(env);
   if (order.status === "refunded") throw new HttpError(403, "This purchase has been refunded.", "refunded");
   const product = findProduct(order.product_id, env);
   if (!product) throw new HttpError(500, "Product mapping is unavailable.");
@@ -442,7 +454,7 @@ async function downloadBook(pathname: string, env: Env): Promise<Response> {
     throw new HttpError(429, "This file has reached its download limit.", "download_limit");
   }
 
-  const object = await env.EBOOKS.get(book.objectKey);
+  const object = await env.EBOOKS.get(book.objectKey, "arrayBuffer");
   if (!object) {
     console.error("Missing protected ebook object", book.objectKey);
     throw new HttpError(503, "This file is temporarily unavailable.", "file_unavailable");
@@ -455,13 +467,12 @@ async function downloadBook(pathname: string, env: Env): Promise<Response> {
   if (counted.meta.changes !== 1) throw new HttpError(429, "This file has reached its download limit.");
 
   const headers = new Headers();
-  object.writeHttpMetadata(headers);
   headers.set("content-type", "application/pdf");
   headers.set("content-disposition", `attachment; filename="${book.fileName}"`);
-  headers.set("content-length", String(object.size));
+  headers.set("content-length", String(object.byteLength));
   headers.set("cache-control", "private, no-store, max-age=0");
   headers.set("x-content-type-options", "nosniff");
-  return new Response(object.body, { headers });
+  return new Response(object, { headers });
 }
 
 function publicProduct(product: Product): Product & { displayPrice: string } {
@@ -488,10 +499,16 @@ async function route(request: Request, env: Env): Promise<Response> {
     });
   }
   if (request.method === "GET" && pathname === "/api/health") {
+    const downloadsConfigured = (await env.EBOOKS.get("__catalog_ready__")) === String(BOOKS.length);
     return json({
       ok: true,
-      checkoutConfigured: configured(env.RAZORPAY_KEY_ID) && configured(env.RAZORPAY_KEY_SECRET),
+      checkoutConfigured:
+        downloadsConfigured &&
+        configured(env.RAZORPAY_KEY_ID) &&
+        configured(env.RAZORPAY_KEY_SECRET) &&
+        configured(env.RAZORPAY_WEBHOOK_SECRET),
       webhookConfigured: configured(env.RAZORPAY_WEBHOOK_SECRET),
+      downloadsConfigured,
     });
   }
   if (request.method === "POST" && pathname === "/api/orders") return createOrder(request, env);

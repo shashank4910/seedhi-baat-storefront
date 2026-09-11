@@ -6,32 +6,59 @@ Date: 2026-09-10
 [OK] Prices finalized: INR 199 single, INR 699 five-book set, INR 999 complete library.
 [OK] Support email configured as hello@hyred.in.
 [OK] Contextual checkout upsells implemented.
-[OK] Checkout-disabled onboarding state implemented.
-[OK] TypeScript, browser JavaScript, Wrangler dry run, D1 migration, catalog values, and 10 PDF mappings validated.
+[OK] Checkout fail-closed behavior implemented.
+[OK] TypeScript, browser JavaScript, upload-script syntax, D1 migration, catalog values, and PDF mappings validated.
 [OK] Cloudflare OAuth authentication confirmed. No OAuth token is recorded in this log.
 [OK] D1 database seedhi-baat-store created in APAC.
      Database ID: 21355d48-4f6a-4304-8196-7e295d7c9297
 [OK] Remote D1 migration checked; no migration remains pending.
-[BLOCKED] R2 bucket seedhi-baat-ebooks was not created.
-          Cloudflare response code: 10042 (R2 must be enabled in the dashboard).
-[INFO] KV namespace EBOOKS was created while evaluating a free storage fallback.
-       Namespace ID: 409592ed244f4c96affc8235d9a65863
-       Status: unused and not bound; current code expects R2, not KV.
+[BLOCKED/SUPERSEDED] R2 bucket seedhi-baat-ebooks was not created.
+                     Cloudflare response code: 10042 (R2 must be enabled in the dashboard).
+[OK] Private PDF storage migrated to Cloudflare KV; R2 is not required for launch.
+     Binding: EBOOKS
+     Namespace ID: 409592ed244f4c96affc8235d9a65863
+[OK] All 10 exact allowlisted PDFs uploaded to remote KV.
+[OK] Readiness marker uploaded: __catalog_ready__=10.
+[OK] Remote KV list confirmed 10 PDF keys plus the readiness marker.
 [OK] Cloudflare workers.dev account subdomain set to seedhibaat.workers.dev.
-[OK] Final Worker deployed with name books.
+[OK] KV-backed Worker deployed with name books.
      URL: https://books.seedhibaat.workers.dev
-     Version ID: 5ff35be9-7649-4d73-b4d4-41fc637502b8
+     Version ID: 4c102971-a938-426e-b10f-ce72fbb1506b
 [OK] Live homepage fetched successfully.
 [OK] Live /api/catalog returned the configured catalog and support email.
-[OK] Live /api/health returned:
-     {"ok":true,"checkoutConfigured":false,"webhookConfigured":false}
+[OK] Invalid protected-download request returned HTTP 404.
+[OK] Order creation failed closed with HTTP 503 checkout_unavailable while payment secrets were absent.
+[OK] Pre-secret /api/health returned:
+     {"ok":true,"checkoutConfigured":false,"webhookConfigured":false,"downloadsConfigured":true}
+
+Razorpay Test Mode activation
+-----------------------------
+[OK] Frontend checkout implemented in public/app.js (Razorpay Standard Checkout):
+     order creation, modal, signature-verified /api/payments/verify, download links, recovery.
+[OK] Fixed a UI bug where the checkout dialog stayed open and frozen behind the Razorpay window;
+     the dialog now closes on open and reopens with an error on cancel/failure.
+[OK] Fixed card rendering to match public/styles.css class names (bundle-card, book-cover accents,
+     book-info/book-buy); cards were previously unstyled due to mismatched markup.
+[OK] Three Razorpay Test Mode secrets installed on the books Worker via the Cloudflare dashboard:
+     RAZORPAY_KEY_ID (rzp_test_...), RAZORPAY_KEY_SECRET, RAZORPAY_WEBHOOK_SECRET.
+     Secret VALUES are not recorded in this repo or log.
+[OK] Razorpay Test Mode webhook enabled at https://books.seedhibaat.workers.dev/api/webhooks/razorpay
+     with 3 subscribed events (payment.captured, payment.failed, refund.processed).
+[WARN] Secrets were observed to drop once after a redeploy (health flipped back to false);
+       re-adding them in the dashboard and deploying restored checkoutConfigured/webhookConfigured.
+[OK] Post-secret /api/health returned:
+     {"ok":true,"checkoutConfigured":true,"webhookConfigured":true,"downloadsConfigured":true}
+[OK] Live Test-Mode order creation verified: POST /api/orders returned HTTP 200 with a real
+     order_... id and the correct amount (single 19900 and complete-library 99900 both confirmed).
+[OK] Latest Worker deployed. Version ID: e0ddbda2-c5c3-4df3-a6dc-1c4f42837db4
 
 Current launch state
 --------------------
-The catalog is public and safe to preview. Payments and PDF delivery are not live.
-Do not configure Razorpay secrets until private R2 storage is enabled, bound, populated,
-and an end-to-end Test Mode purchase/download has passed.
+Test Mode is fully configured and server-verified. Catalog, private KV downloads, checkout, and
+webhook are all active. Remaining before Live: one full browser Test-Mode purchase (pay with test
+card 4111 1111 1111 1111), confirm webhook delivery and the D1 order moving to paid, then switch to
+Live-mode credentials and a Live-mode webhook. The Worker fails closed if any secret is missing.
 
-Raw terminal captures are intentionally excluded from Git because they contain local machine
-paths, stale deployment attempts, and personal account metadata. This file preserves the
+Raw terminal captures and local scratch files are intentionally excluded from Git because they
+contain local machine paths, stale attempts, and personal account metadata. This file preserves the
 operational facts without credentials or local identity details.
