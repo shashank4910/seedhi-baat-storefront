@@ -225,9 +225,8 @@
 
   var verificationStarted = false;
 
-  function openRazorpay(order) {
+  async function openRazorpay(order) {
     verificationStarted = false;
-    loadRazorpayScript().catch(function () {}); // warm up while user reviews the dialog
     var options = {
       key: order.keyId,
       amount: order.amount,
@@ -293,17 +292,20 @@
       theme: { color: '#1e6b4f' }
     };
 
-    var rzp = new Razorpay(options);
-    rzp.on('payment.failed', function () {
-      reopenCheckoutWithError('Payment failed. Please try another payment method.');
-    });
     if (checkoutDialog.open) checkoutDialog.close();
     checkoutStatus.textContent = '';
-    loadRazorpayScript().then(function () {
+    try {
+      // Wait for checkout.js BEFORE constructing the instance, otherwise the
+      // very first click throws "Razorpay is not defined" (script still loading).
+      await loadRazorpayScript();
+      var rzp = new Razorpay(options);
+      rzp.on('payment.failed', function () {
+        reopenCheckoutWithError('Payment failed. Please try another payment method.');
+      });
       rzp.open();
-    }).catch(function (err) {
-      reopenCheckoutWithError(err.message);
-    });
+    } catch (err) {
+      reopenCheckoutWithError((err && err.message) || 'Could not open the payment window. Please try again.');
+    }
   }
 
   // ---------- restore ----------
