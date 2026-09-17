@@ -1,6 +1,23 @@
 {
   "deployments": [
     {
+      "id": "7b0b8513-d8bc-4824-95f1-8182ba5342c5",
+      "source": "api",
+      "strategy": "percentage",
+      "author_email": "shashanksingh4910@gmail.com",
+      "annotations": {
+        "workers/message": "Publish reviewed mobile conversion improvements",
+        "workers/triggered_by": "deployment"
+      },
+      "versions": [
+        {
+          "version_id": "0b9ac35d-c4dd-46df-b172-8de860ef106e",
+          "percentage": 100
+        }
+      ],
+      "created_on": "2026-09-16T13:12:46.173843Z"
+    },
+    {
       "id": "0810fa20-4c8a-4e0f-95c6-8e9dd67aa679",
       "source": "api",
       "strategy": "percentage",
@@ -149,22 +166,6 @@
         }
       ],
       "created_on": "2026-09-13T12:55:42.228115Z"
-    },
-    {
-      "id": "582ff9eb-0dd8-4691-a08e-b098b1dca06d",
-      "source": "wrangler",
-      "strategy": "percentage",
-      "author_email": "shashanksingh4910@gmail.com",
-      "annotations": {
-        "workers/triggered_by": "deployment"
-      },
-      "versions": [
-        {
-          "version_id": "85940f28-3180-44dd-b111-3956a0eead89",
-          "percentage": 100
-        }
-      ],
-      "created_on": "2026-09-13T12:49:34.833784Z"
     }
   ]
 }

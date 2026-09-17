@@ -5,9 +5,10 @@
 ## Live site
 - URL: **https://books.seedhibaat.workers.dev** (Cloudflare Worker `books`, account `cc44de269b4c7292c4918a6bca434a81`)
 - Health check: `curl https://books.seedhibaat.workers.dev/api/health`
-- Verified 2026-09-17: every file in `public/` matches the deployed version byte-for-byte
-  (18/18 assets match `prepared-version.json` manifest; live spot-check of index.html,
-  styles.css, app.js, ideas/index.html, robots.txt all MATCH).
+- Verified 2026-09-17 (initial): every file in `public/` matched the deployed version byte-for-byte.
+- Re-deployed 2026-09-17: version `5fa085d4-f1c8-4f51-8daa-71cdb7d90110` — fix for "Razorpay is not defined"
+  on first Pay click on /ideas (checkout.js is now awaited before `new Razorpay()`).
+  Live `/ideas/app.js` re-verified to match local; `/api/health` all-true after deploy.
 
 ## What lives here (copied 2026-09-17 from the Sep 16 workspace)
 - `public/` — the site assets (landing page + `/ideas/` page) that ARE LIVE right now
