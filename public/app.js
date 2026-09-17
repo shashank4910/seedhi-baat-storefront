@@ -405,6 +405,11 @@
           resetPayButton();
           checkoutStatus.textContent = '';
           showSuccess(data);
+          // Auto-download the purchased files right after verification succeeds,
+          // so the user gets the PDF even if they close the dialog immediately.
+          // Runs inside the payment handler's user-activation window, which keeps
+          // browsers from blocking it. Manual buttons remain as fallback.
+          autoDownload(data.downloads || []);
         } catch (err) {
           reopenCheckoutWithError(
             (err && err.message) ||
@@ -440,6 +445,34 @@
     rzp.open();
   }
 
+  // ---------- download helpers ----------
+  // Fetches the file and saves it via a temporary object URL.
+  async function downloadOne(item) {
+    const res = await fetch(item.url);
+    if (!res.ok) throw new Error('Download failed');
+    const blob = await res.blob();
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = url;
+    a.download = (item.title || 'seedhi-baat-guide') + '.pdf';
+    document.body.appendChild(a);
+    a.click();
+    setTimeout(() => {
+      document.body.removeChild(a);
+      URL.revokeObjectURL(url);
+    }, 100);
+  }
+
+  // Auto-starts downloads right after a VERIFIED payment so the user gets the
+  // files even if they close the success dialog immediately. Best effort: if
+  // the browser blocks the programmatic download (user activation expired),
+  // the manual buttons in the dialog remain as fallback.
+  function autoDownload(downloads) {
+    (downloads || []).forEach((item) => {
+      downloadOne(item).catch(() => {});
+    });
+  }
+
   function showSuccess(data) {
     successDialog.showModal();
 
@@ -468,23 +501,10 @@
           btn.textContent = 'Downloading...';
 
           try {
-            const res = await fetch(item.url);
-            if (!res.ok) throw new Error('Download failed');
-
-            const blob = await res.blob();
-            const url = URL.createObjectURL(blob);
-            const a = document.createElement('a');
-            a.href = url;
-            a.download = item.title + '.pdf';
-            document.body.appendChild(a);
-            a.click();
-            setTimeout(() => {
-              document.body.removeChild(a);
-              URL.revokeObjectURL(url);
-            }, 100);
+            await downloadOne(item);
             btn.textContent = 'Downloaded ✓';
           } catch (err) {
-            btn.textContent = 'Download failed';
+            btn.textContent = 'Download failed — tap to retry';
             console.error('Download error:', err);
           }
         });
