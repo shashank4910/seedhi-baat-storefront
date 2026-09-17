@@ -13,4 +13,6 @@ All Seedhi Baat / ebook storefront work happens here. Do not create or edit copi
 - Other known stale copies (do not edit): `Projects/seedhi-baat-storefront` (pre-Sep-13),
   `Documents/Codex/2026-09-10/.../work/storefront` (Sep 11),
   `Documents/Codex/2026-09-13/the-x20/work/storefront-conversion` (Sep 16 snapshot, now mirrored here).
+- After every change: commit and `git push origin main` (remote shashank4910/seedhi-baat-storefront
+  is already configured and was force-synced 2026-09-17 to match this repo).
 - After any deploy, update `README.md` "Verified" note with the new date and deploy record.

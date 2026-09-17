@@ -35,7 +35,9 @@ There were 4 copies of this project scattered on disk; agents kept editing the w
 3. `C:/Users/Admin/Documents/Codex/2026-09-13/the-x20/work/storefront-conversion` — the Sep 15–16 session workspace; source of this canonical copy
 4. **HERE — `C:/Users/Admin/Projects/seedhi-baat`** — canonical, matches live as of Sep 17
 
-GitHub `shashank4910/seedhi-baat-storefront` has only the OLD 2-commit code (pre-Sep-13).
+GitHub `shashank4910/seedhi-baat-storefront` was synced 2026-09-17 (force-push) to match
+this repo exactly — it now contains the live code including today's Razorpay fix.
+From now on: **commit + `git push origin main` after every change** so GitHub stays truthful.
 **Live source of truth = Cloudflare itself.** This folder is a verified mirror of it.
 
 ## Git
