@@ -1,0 +1,24 @@
+{
+  "version": "0b9ac35d-c4dd-46df-b172-8de860ef106e",
+  "assets": {
+    "app.js": "077258ec13b0dedd1055069db5b9c138a3fd0eedf212818576bbeb89ff89ffde",
+    "apple-touch-icon.png": "f17fa2e19eaeda04ccc8c90dd32ccf00bf71df398cc46536d4440a7dbd0b72b0",
+    "bundle-visual.webp": "0ccdd91e80efa511c7fcdf03548a6dfe0cc19613334aa21f963abb0ac82f9d5c",
+    "favicon-32.png": "3030a9295b36d52baeed13695511dc5fe8182cab39aec2c9896c5c2ce734f689",
+    "icon-192.png": "8171b3aff907caae889fa91c57c0b9aaa9ad79879d250773ea85f15dabc60359",
+    "icon-512.png": "204c9b2a8dedb47e7a68a6cf58c2278e3990767a1a40d9c4bd622317b3fc61d1",
+    "ideas/app.js": "d01d690227e79fc5a1246f1c1ef3581204ed4f09898075554b65a7b1a48cdfca",
+    "ideas/index.html": "2671a74c425e57337d4ec13c01e6e6daef469dbb9b79269523c02977b5a8efb8",
+    "ideas/styles.css": "c7042486d9bfefabbb0dcf62344a4fb78a0caa340994f4e38d43532f66dbc869",
+    "index.html": "0ed75ed27fe680e39aa70da99c91e52c9d5b452b4dad3b9292d938ae792a6d58",
+    "llms.txt": "efed1cdb156655bf654325d256e8f18a45d3556f8e5049adac45767c963d3a12",
+    "meta-pixel.js": "0184208a84113b6d6335f0dd4489710d72b3ca79e3a1c9f08e83792795a07ace",
+    "og-cover.png": "8ea6addc9fc54f9186b16eae635fde572bc989f822491be3d793cd4a385f9633",
+    "robots.txt": "29049a0b0fe04ceaa2f2a4038090f013e0a6eaec9523b3fcb1c2da97a37bd564",
+    "samples/conversation-page-5.webp": "1cdaad90a7d7c38679d48b4dfcfdd1bffe96b21090001970315ee7ef7eab9a01",
+    "site.webmanifest": "c4d7cee70502e97af2903ebbcacfb883666176c2083d6d666ccb303aa9854e06",
+    "sitemap.xml": "30f8e2bf560067f800dfd33dfdbb85b5f2e047e951227bc68c5610f54da75d62",
+    "styles.css": "718d72a93f9c9fceff4bfc3bb1827448cf9adc60469f494112bd91f1fceb6989"
+  },
+  "worker_sha256": "55c878ddc953d97d467bf534091f63982185d375e58aa70b8d92d85eff911301"
+}

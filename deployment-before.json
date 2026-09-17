@@ -1,0 +1,170 @@
+{
+  "deployments": [
+    {
+      "id": "0810fa20-4c8a-4e0f-95c6-8e9dd67aa679",
+      "source": "api",
+      "strategy": "percentage",
+      "author_email": "shashanksingh4910@gmail.com",
+      "annotations": {
+        "workers/message": "Publish reviewed mobile conversion improvements",
+        "workers/triggered_by": "deployment"
+      },
+      "versions": [
+        {
+          "version_id": "b21ee1a9-a185-440b-9a11-c0aff9b0c0f5",
+          "percentage": 100
+        }
+      ],
+      "created_on": "2026-09-15T18:13:51.338207Z"
+    },
+    {
+      "id": "622271e4-4856-47b5-98dd-fc5e5e86ceb2",
+      "source": "api",
+      "strategy": "percentage",
+      "author_email": "shashanksingh4910@gmail.com",
+      "annotations": {
+        "workers/message": "Publish reviewed mobile conversion improvements",
+        "workers/triggered_by": "deployment"
+      },
+      "versions": [
+        {
+          "version_id": "836b5d44-5e5f-4247-a363-f45faeb4e5b9",
+          "percentage": 100
+        }
+      ],
+      "created_on": "2026-09-14T09:49:43.671232Z"
+    },
+    {
+      "id": "11083e07-d8b4-4f3b-bd89-5062337d49c4",
+      "source": "api",
+      "strategy": "percentage",
+      "author_email": "shashanksingh4910@gmail.com",
+      "annotations": {
+        "workers/message": "Rollback to Sep-14 12pm state: restore /ideas ad landing page and full asset set",
+        "workers/triggered_by": "deployment"
+      },
+      "versions": [
+        {
+          "version_id": "2ada188c-7d2a-4d1c-9daa-7c314112e56d",
+          "percentage": 100
+        }
+      ],
+      "created_on": "2026-09-14T09:29:34.58363Z"
+    },
+    {
+      "id": "42e7e300-0ebb-42b5-8faf-aa85b233ac21",
+      "source": "api",
+      "strategy": "percentage",
+      "author_email": "shashanksingh4910@gmail.com",
+      "annotations": {
+        "workers/message": "Publish reviewed mobile conversion improvements",
+        "workers/triggered_by": "deployment"
+      },
+      "versions": [
+        {
+          "version_id": "cb5b36da-5cc5-48c7-991f-83cef91a96ac",
+          "percentage": 100
+        }
+      ],
+      "created_on": "2026-09-14T08:17:21.014049Z"
+    },
+    {
+      "id": "5bf836b5-661f-43f6-91df-cec9461eae2f",
+      "source": "api",
+      "strategy": "percentage",
+      "author_email": "shashanksingh4910@gmail.com",
+      "annotations": {
+        "workers/message": "Publish reviewed mobile conversion improvements",
+        "workers/triggered_by": "deployment"
+      },
+      "versions": [
+        {
+          "version_id": "21fb0a94-eec2-43f2-ae55-cd2d66be102d",
+          "percentage": 100
+        }
+      ],
+      "created_on": "2026-09-14T08:15:33.309492Z"
+    },
+    {
+      "id": "c4709e98-156a-44cd-a8ae-cc45d0fc10ea",
+      "source": "api",
+      "strategy": "percentage",
+      "author_email": "shashanksingh4910@gmail.com",
+      "annotations": {
+        "workers/message": "Publish reviewed mobile conversion improvements",
+        "workers/triggered_by": "deployment"
+      },
+      "versions": [
+        {
+          "version_id": "cd5f26d6-eeb5-495d-a9d1-f82836cd9bfe",
+          "percentage": 100
+        }
+      ],
+      "created_on": "2026-09-14T08:13:26.597033Z"
+    },
+    {
+      "id": "de9985cf-28f6-4157-b6ea-0303303248ff",
+      "source": "wrangler",
+      "strategy": "percentage",
+      "author_email": "shashanksingh4910@gmail.com",
+      "annotations": {
+        "workers/triggered_by": "deployment"
+      },
+      "versions": [
+        {
+          "version_id": "2ada188c-7d2a-4d1c-9daa-7c314112e56d",
+          "percentage": 100
+        }
+      ],
+      "created_on": "2026-09-13T13:57:47.923082Z"
+    },
+    {
+      "id": "e606b511-4409-4b1a-b9aa-5f5c0bc416bd",
+      "source": "wrangler",
+      "strategy": "percentage",
+      "author_email": "shashanksingh4910@gmail.com",
+      "annotations": {
+        "workers/triggered_by": "deployment"
+      },
+      "versions": [
+        {
+          "version_id": "f61ca101-b297-4f59-bb79-5f5e0ffece4f",
+          "percentage": 100
+        }
+      ],
+      "created_on": "2026-09-13T13:53:48.960275Z"
+    },
+    {
+      "id": "5e89b80f-9022-40e5-b429-469a831ed5ed",
+      "source": "wrangler",
+      "strategy": "percentage",
+      "author_email": "shashanksingh4910@gmail.com",
+      "annotations": {
+        "workers/triggered_by": "secret"
+      },
+      "versions": [
+        {
+          "version_id": "fdc69baa-5a3c-45dd-b42e-69112aad374c",
+          "percentage": 100
+        }
+      ],
+      "created_on": "2026-09-13T12:55:42.228115Z"
+    },
+    {
+      "id": "582ff9eb-0dd8-4691-a08e-b098b1dca06d",
+      "source": "wrangler",
+      "strategy": "percentage",
+      "author_email": "shashanksingh4910@gmail.com",
+      "annotations": {
+        "workers/triggered_by": "deployment"
+      },
+      "versions": [
+        {
+          "version_id": "85940f28-3180-44dd-b111-3956a0eead89",
+          "percentage": 100
+        }
+      ],
+      "created_on": "2026-09-13T12:49:34.833784Z"
+    }
+  ]
+}

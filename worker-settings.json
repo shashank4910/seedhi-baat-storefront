@@ -1,0 +1,97 @@
+{
+  "result": {
+    "placement": {},
+    "compatibility_date": "2026-09-10",
+    "compatibility_flags": [],
+    "usage_model": "standard",
+    "tags": [],
+    "tail_consumers": [],
+    "logpush": false,
+    "annotations": {
+      "workers/message": "Mobile conversion update: clear offers, samples and checkout contents; production backend preserved.",
+      "workers/triggered_by": "version_upload"
+    },
+    "bindings": [
+      {
+        "name": "ASSETS",
+        "type": "assets"
+      },
+      {
+        "database_id": "21355d48-4f6a-4304-8196-7e295d7c9297",
+        "id": "21355d48-4f6a-4304-8196-7e295d7c9297",
+        "name": "DB",
+        "type": "d1"
+      },
+      {
+        "name": "DOWNLOAD_LIMIT",
+        "text": "3",
+        "type": "plain_text"
+      },
+      {
+        "name": "DOWNLOAD_TTL_HOURS",
+        "text": "168",
+        "type": "plain_text"
+      },
+      {
+        "name": "EBOOKS",
+        "namespace_id": "409592ed244f4c96affc8235d9a65863",
+        "type": "kv_namespace"
+      },
+      {
+        "name": "PRICE_AI_PRO_PAISE",
+        "text": "29900",
+        "type": "plain_text"
+      },
+      {
+        "name": "PRICE_COMPLETE_BUNDLE_PAISE",
+        "text": "99900",
+        "type": "plain_text"
+      },
+      {
+        "name": "PRICE_IDEAS_AI_PRO_BUNDLE_PAISE",
+        "text": "49900",
+        "type": "plain_text"
+      },
+      {
+        "name": "PRICE_IDEAS_GUIDE_PAISE",
+        "text": "29900",
+        "type": "plain_text"
+      },
+      {
+        "name": "PRICE_LANGUAGE_BUNDLE_PAISE",
+        "text": "69900",
+        "type": "plain_text"
+      },
+      {
+        "name": "PRICE_SINGLE_PAISE",
+        "text": "19900",
+        "type": "plain_text"
+      },
+      {
+        "name": "RAZORPAY_KEY_ID",
+        "type": "secret_text"
+      },
+      {
+        "name": "RAZORPAY_KEY_SECRET",
+        "type": "secret_text"
+      },
+      {
+        "name": "RAZORPAY_WEBHOOK_SECRET",
+        "type": "secret_text"
+      },
+      {
+        "name": "STORE_NAME",
+        "text": "Seedhi Baat Guides",
+        "type": "plain_text"
+      },
+      {
+        "name": "SUPPORT_EMAIL",
+        "text": "hello@hyred.in",
+        "type": "plain_text"
+      }
+    ]
+  },
+  "success": true,
+  "errors": [],
+  "messages": []
+}

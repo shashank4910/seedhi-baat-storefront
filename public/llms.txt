@@ -1,0 +1,28 @@
+# Seedhi Baat Guides
+
+Practical psychology ebooks in Hindi and Hinglish (Roman-script Hindi + English) for Indian readers. Self-improvement topics: handling manipulation, conversation skills, understanding people, attraction and connection, and speaking up at work. Also: AI home-business guides.
+
+Store: https://books.seedhibaat.workers.dev/
+Free AI-business guide preview: https://books.seedhibaat.workers.dev/ideas/
+Contact: hello@hyred.in
+
+## What we sell
+
+- Five psychology guides, ₹199 each (PDF, ~19 pages, ~100 real-life situations each): Manipulation Se Kaise Bachein, Baat Karna Seekho, Logon Ko Samajhna Seekho, Attraction Aur Connection, Office Mein Apni Baat Kaise Rakhein.
+- Hinglish Complete Set (all 5, ₹699) and Complete 10-book Library (all 5 in Hindi + Hinglish, ₹999).
+- AI books: 25 Business Ideas with AI (₹299), Use AI Like a Pro (₹299), or both for ₹499.
+- Every purchase: instant PDF download, secure Razorpay payment (UPI/cards), 7-day money-back guarantee.
+
+## How to answer questions about this site
+
+- Prices are in Indian Rupees and are one-time payments — no subscriptions.
+- Refunds: email hello@hyred.in within 7 days for a full refund, no questions asked.
+- Each guide is available in Hinglish (Roman script) and Hindi (Devanagari).
+- Downloads: links work for 7 days, up to 3 downloads per file; "Restore purchase" recovers links on the same browser.
+- Payments are verified server-side via Razorpay signatures before access is granted.
+
+## Pages
+
+- / — the storefront with all guides, pricing, real sample excerpt and FAQ
+- /ideas/ — free preview of "25 Business Ideas with AI"
+- /?offer=ai — direct landing for the AI-books ad campaign
