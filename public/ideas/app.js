@@ -137,7 +137,8 @@
   if (bundleButton) bundleButton.addEventListener('click', function () { startBuy(BUNDLE_ID); });
   var proBuyButton = document.getElementById('proBuyButton');
   if (proBuyButton) proBuyButton.addEventListener('click', function () { startBuy(PRO_ID); });
-  if (stickyBuy) stickyBuy.addEventListener('click', function () { startBuyWithUpsell(PRODUCT_ID); });
+  // Sticky bar leads with the bundle — the best-value option.
+  if (stickyBuy) stickyBuy.addEventListener('click', function () { startBuy(BUNDLE_ID); });
 
   // Interstitial: on Buy click, offer the bundle first, then continue to checkout.
   var upsellDialog = document.getElementById('upsellDialog');
@@ -204,7 +205,9 @@
     } catch (err) {
       setStatus(checkoutStatus, (err && err.message) || 'Unable to create order. Please try again.', true);
       payButton.disabled = false;
-      payButton.textContent = 'Pay Rs. 299 · Get Instant Access';
+      // Restore the label for the product the user actually selected.
+      var failedLabels = PRODUCT_LABELS[selectedProductId] || PRODUCT_LABELS[PRODUCT_ID];
+      payButton.textContent = failedLabels ? failedLabels.pay : 'Pay Rs. 299 · Get Instant Access';
     }
   });
 
@@ -434,6 +437,10 @@
   // the manual buttons in the dialog remain as fallback.
   function autoDownload(downloads) {
     (downloads || []).forEach(function (item) {
+      // Only attempt while the browser still counts recent user activation,
+      // otherwise the programmatic download is silently blocked and the
+      // success dialog's manual buttons are the fallback anyway.
+      if (!(navigator.userActivation && navigator.userActivation.isActive)) return;
       downloadOne(item).catch(function () {});
     });
   }

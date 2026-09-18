@@ -1,0 +1,79 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 800" role="img" aria-label="Book cover: Use AI Like a Pro">
+  <defs>
+    <linearGradient id="bg2" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#454b60"/>
+      <stop offset="0.45" stop-color="#262a3b"/>
+      <stop offset="1" stop-color="#0e1020"/>
+    </linearGradient>
+    <linearGradient id="spine2" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#000000" stop-opacity="0.4"/>
+      <stop offset="0.035" stop-color="#000000" stop-opacity="0.12"/>
+      <stop offset="0.07" stop-color="#ffffff" stop-opacity="0.2"/>
+      <stop offset="0.13" stop-color="#ffffff" stop-opacity="0"/>
+    </linearGradient>
+    <linearGradient id="sheen2" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0.5" stop-color="#ffffff" stop-opacity="0"/>
+      <stop offset="0.62" stop-color="#ffffff" stop-opacity="0.09"/>
+      <stop offset="0.72" stop-color="#ffffff" stop-opacity="0"/>
+    </linearGradient>
+    <linearGradient id="goldbar2" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#f7b733"/>
+      <stop offset="1" stop-color="#e8930c"/>
+    </linearGradient>
+  </defs>
+
+  <rect width="600" height="800" fill="url(#bg2)"/>
+
+  <!-- chat bubbles motif -->
+  <g opacity="0.10" fill="#ffffff">
+    <rect x="330" y="120" width="220" height="60" rx="18"/>
+    <rect x="50" y="560" width="200" height="56" rx="18"/>
+    <rect x="392" y="196" width="150" height="44" rx="16"/>
+  </g>
+  <g opacity="0.14" fill="#f7b733">
+    <path d="M500 520 l12 30 30 12 -30 12 -12 30 -12 -30 -30 -12 30 -12 z"/>
+    <path d="M120 250 l8 20 20 8 -20 8 -8 20 -8 -20 -20 -8 20 -8 z"/>
+  </g>
+
+  <!-- spine shading -->
+  <rect width="600" height="800" fill="url(#spine2)"/>
+  <rect width="600" height="800" fill="url(#sheen2)"/>
+
+  <!-- brand band -->
+  <rect x="56" y="52" width="488" height="2" fill="#ffffff" opacity="0.3"/>
+  <text x="56" y="92" font-family="Arial, Helvetica, sans-serif" font-size="24" font-weight="800" letter-spacing="10" fill="#ffffff">SEEDHI BAAT</text>
+  <rect x="56" y="108" width="488" height="2" fill="#ffffff" opacity="0.3"/>
+
+  <!-- kicker chip -->
+  <rect x="56" y="150" width="266" height="40" rx="20" fill="#0e1020" opacity="0.6"/>
+  <text x="76" y="176" font-family="Arial, Helvetica, sans-serif" font-size="17" font-weight="800" letter-spacing="1.5" fill="#ffd9a0">BEGINNER'S GUIDE</text>
+
+  <!-- title -->
+  <text x="56" y="272" font-family="Arial, Helvetica, sans-serif" font-size="68" font-weight="900" fill="#ffffff">Use AI</text>
+  <text x="56" y="348" font-family="Arial, Helvetica, sans-serif" font-size="68" font-weight="900" fill="#ffffff">Like a</text>
+  <text x="56" y="432" font-family="Arial, Helvetica, sans-serif" font-size="80" font-weight="900" fill="#f7b733">Pro</text>
+
+  <!-- subtitle -->
+  <text x="56" y="496" font-family="Arial, Helvetica, sans-serif" font-size="24" font-weight="600" fill="#e8eaf2">Get useful answers from any</text>
+  <text x="56" y="528" font-family="Arial, Helvetica, sans-serif" font-size="24" font-weight="600" fill="#e8eaf2">AI chat — in plain language</text>
+
+  <!-- gold rule -->
+  <rect x="56" y="564" width="120" height="6" rx="3" fill="url(#goldbar2)"/>
+
+  <!-- bottom feature plate -->
+  <rect x="56" y="668" width="488" height="76" rx="12" fill="#0e1020" opacity="0.55"/>
+  <text x="80" y="700" font-family="Arial, Helvetica, sans-serif" font-size="19" font-weight="900" fill="#ffffff">24 CHAPTERS</text>
+  <text x="80" y="726" font-family="Arial, Helvetica, sans-serif" font-size="14" font-weight="600" fill="#c6cade">short &amp; simple</text>
+  <text x="222" y="700" font-family="Arial, Helvetica, sans-serif" font-size="19" font-weight="900" fill="#ffffff">50+ PROMPTS</text>
+  <text x="222" y="726" font-family="Arial, Helvetica, sans-serif" font-size="14" font-weight="600" fill="#c6cade">copy &amp; adapt</text>
+  <text x="386" y="700" font-family="Arial, Helvetica, sans-serif" font-size="19" font-weight="900" fill="#ffffff">59 PAGES</text>
+  <text x="386" y="726" font-family="Arial, Helvetica, sans-serif" font-size="14" font-weight="600" fill="#c6cade">beginner level</text>
+
+  <!-- corner badge -->
+  <g transform="translate(486 150)">
+    <circle r="46" fill="#f7b733"/>
+    <circle r="46" fill="none" stroke="#ffe1a3" stroke-width="3"/>
+    <text y="-4" font-family="Arial, Helvetica, sans-serif" font-size="16" font-weight="900" fill="#2c1c00" text-anchor="middle">PAIRS</text>
+    <text y="16" font-family="Arial, Helvetica, sans-serif" font-size="16" font-weight="900" fill="#2c1c00" text-anchor="middle">WITH 25</text>
+  </g>
+</svg>

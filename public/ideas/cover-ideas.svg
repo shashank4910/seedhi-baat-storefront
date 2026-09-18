@@ -1,0 +1,82 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 800" role="img" aria-label="Book cover: 25 Business Ideas with AI">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#2f9d6e"/>
+      <stop offset="0.45" stop-color="#1e6b4f"/>
+      <stop offset="1" stop-color="#0c3325"/>
+    </linearGradient>
+    <linearGradient id="spine" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#000000" stop-opacity="0.38"/>
+      <stop offset="0.035" stop-color="#000000" stop-opacity="0.12"/>
+      <stop offset="0.07" stop-color="#ffffff" stop-opacity="0.22"/>
+      <stop offset="0.13" stop-color="#ffffff" stop-opacity="0"/>
+    </linearGradient>
+    <linearGradient id="sheen" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0.5" stop-color="#ffffff" stop-opacity="0"/>
+      <stop offset="0.62" stop-color="#ffffff" stop-opacity="0.10"/>
+      <stop offset="0.72" stop-color="#ffffff" stop-opacity="0"/>
+    </linearGradient>
+    <linearGradient id="goldbar" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#f7b733"/>
+      <stop offset="1" stop-color="#e8930c"/>
+    </linearGradient>
+  </defs>
+
+  <rect width="600" height="800" fill="url(#bg)"/>
+
+  <!-- subtle dot texture -->
+  <g fill="#ffffff" opacity="0.05">
+    <circle cx="60" cy="70" r="2.4"/><circle cx="120" cy="70" r="2.4"/><circle cx="180" cy="70" r="2.4"/>
+    <circle cx="60" cy="120" r="2.4"/><circle cx="120" cy="120" r="2.4"/><circle cx="180" cy="120" r="2.4"/>
+    <circle cx="60" cy="170" r="2.4"/><circle cx="120" cy="170" r="2.4"/><circle cx="180" cy="170" r="2.4"/>
+    <circle cx="420" cy="620" r="2.4"/><circle cx="480" cy="620" r="2.4"/><circle cx="540" cy="620" r="2.4"/>
+    <circle cx="420" cy="670" r="2.4"/><circle cx="480" cy="670" r="2.4"/><circle cx="540" cy="670" r="2.4"/>
+    <circle cx="420" cy="720" r="2.4"/><circle cx="480" cy="720" r="2.4"/><circle cx="540" cy="720" r="2.4"/>
+  </g>
+
+  <!-- giant 25 watermark -->
+  <text x="316" y="560" font-family="Arial, Helvetica, sans-serif" font-size="400" font-weight="900" fill="#ffffff" opacity="0.07" text-anchor="middle">25</text>
+
+  <!-- spine shading -->
+  <rect width="600" height="800" fill="url(#spine)"/>
+  <rect width="600" height="800" fill="url(#sheen)"/>
+
+  <!-- brand band -->
+  <rect x="56" y="52" width="488" height="2" fill="#ffffff" opacity="0.35"/>
+  <text x="56" y="92" font-family="Arial, Helvetica, sans-serif" font-size="24" font-weight="800" letter-spacing="10" fill="#ffffff">SEEDHI BAAT</text>
+  <rect x="56" y="108" width="488" height="2" fill="#ffffff" opacity="0.35"/>
+
+  <!-- kicker chip -->
+  <rect x="56" y="150" width="332" height="40" rx="20" fill="#0c3325" opacity="0.55"/>
+  <text x="76" y="176" font-family="Arial, Helvetica, sans-serif" font-size="17" font-weight="800" letter-spacing="1.5" fill="#ffd9a0">STARTER GUIDE · NO TECH SKILLS</text>
+
+  <!-- title -->
+  <text x="56" y="268" font-family="Arial, Helvetica, sans-serif" font-size="66" font-weight="900" fill="#ffffff">25 Business</text>
+  <text x="56" y="342" font-family="Arial, Helvetica, sans-serif" font-size="66" font-weight="900" fill="#ffffff">Ideas with</text>
+  <text x="56" y="422" font-family="Arial, Helvetica, sans-serif" font-size="76" font-weight="900" fill="#f7b733">AI</text>
+
+  <!-- subtitle -->
+  <text x="56" y="486" font-family="Arial, Helvetica, sans-serif" font-size="24" font-weight="600" fill="#eaf4ee">Start a home business with just</text>
+  <text x="56" y="518" font-family="Arial, Helvetica, sans-serif" font-size="24" font-weight="600" fill="#eaf4ee">a phone — full step-by-step</text>
+  <text x="56" y="550" font-family="Arial, Helvetica, sans-serif" font-size="24" font-weight="600" fill="#eaf4ee">implementation guide</text>
+
+  <!-- gold rule -->
+  <rect x="56" y="586" width="120" height="6" rx="3" fill="url(#goldbar)"/>
+
+  <!-- bottom feature plate -->
+  <rect x="56" y="668" width="488" height="76" rx="12" fill="#0c3325" opacity="0.5"/>
+  <text x="80" y="700" font-family="Arial, Helvetica, sans-serif" font-size="19" font-weight="900" fill="#ffffff">25 IDEAS</text>
+  <text x="80" y="726" font-family="Arial, Helvetica, sans-serif" font-size="14" font-weight="600" fill="#cfe5d6">ready to copy</text>
+  <text x="222" y="700" font-family="Arial, Helvetica, sans-serif" font-size="19" font-weight="900" fill="#ffffff">50 PROMPTS</text>
+  <text x="222" y="726" font-family="Arial, Helvetica, sans-serif" font-size="14" font-weight="600" fill="#cfe5d6">paste &amp; go</text>
+  <text x="386" y="700" font-family="Arial, Helvetica, sans-serif" font-size="19" font-weight="900" fill="#ffffff">7-DAY PLAN</text>
+  <text x="386" y="726" font-family="Arial, Helvetica, sans-serif" font-size="14" font-weight="600" fill="#cfe5d6">first customer</text>
+
+  <!-- corner badge -->
+  <g transform="translate(486 150)">
+    <circle r="46" fill="#e8930c"/>
+    <circle r="46" fill="none" stroke="#ffd9a0" stroke-width="3"/>
+    <text y="-4" font-family="Arial, Helvetica, sans-serif" font-size="17" font-weight="900" fill="#2c1c00" text-anchor="middle">FREE</text>
+    <text y="16" font-family="Arial, Helvetica, sans-serif" font-size="17" font-weight="900" fill="#2c1c00" text-anchor="middle">TOOLS</text>
+  </g>
+</svg>
