@@ -9,6 +9,11 @@
 - Re-deployed 2026-09-17: version `5fa085d4-f1c8-4f51-8daa-71cdb7d90110` — fix for "Razorpay is not defined"
   on first Pay click on /ideas (checkout.js is now awaited before `new Razorpay()`).
   Live `/ideas/app.js` re-verified to match local; `/api/health` all-true after deploy.
+- Deployed 2026-09-19: version `14ebc3e8-a43e-4334-8911-a9ec59cdacc2` — /ideas conversion overhaul:
+  added designed SVG covers (`cover-ideas.svg`, `cover-ai.svg`, `inside-preview.svg`), fixed the
+  self-cancelling strikethrough price and false Rs. 1,998 / "80% OFF" claims (real anchor Rs. 598 →
+  Rs. 499), made hero/topbar/sticky bar bundle-first. Post-deploy checks: / 200, /ideas 307,
+  /ideas/ 200, all new assets 200, `/api/health` all-true, pixel present on both pages.
 
 ## What lives here (copied 2026-09-17 from the Sep 16 workspace)
 - `public/` — the site assets (landing page + `/ideas/` page) that ARE LIVE right now

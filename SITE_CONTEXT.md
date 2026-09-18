@@ -1,6 +1,7 @@
 # Seedhi Baat — SITE CONTEXT (READ THIS FIRST)
 
-Last verified against production: **2026-09-14**, Cloudflare version `836b5d44-5e5f-4247-a363-f45faeb4e5b9`.
+Last verified against production: **2026-09-19**, Cloudflare version `14ebc3e8-a43e-4334-8911-a9ec59cdacc2`.
+(2026-09-19 deploy: /ideas conversion overhaul — SVG covers added, honest pricing fixes, bundle-first CTAs; post-deploy health all-true.)
 Purpose: any agent (or human) working on this site must read this before touching anything. This file exists because a deploy on 2026-09-14 deleted a live ad landing page — see **§8 Deploy rules** and **§9 Incident log**.
 
 ---

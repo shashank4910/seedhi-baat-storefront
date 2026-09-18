@@ -1,6 +1,40 @@
 {
   "deployments": [
     {
+      "id": "7e6df0c4-cb24-4884-8c75-ed01e581abe7",
+      "source": "api",
+      "strategy": "percentage",
+      "author_email": "shashanksingh4910@gmail.com",
+      "annotations": {
+        "workers/message": "Publish reviewed mobile conversion improvements",
+        "workers/triggered_by": "deployment"
+      },
+      "versions": [
+        {
+          "version_id": "ddaad4d2-e356-4665-9a65-99bfa415b5d1",
+          "percentage": 100
+        }
+      ],
+      "created_on": "2026-09-17T05:37:10.342982Z"
+    },
+    {
+      "id": "8f7a2622-ff05-4403-a600-920e22f61d0c",
+      "source": "api",
+      "strategy": "percentage",
+      "author_email": "shashanksingh4910@gmail.com",
+      "annotations": {
+        "workers/message": "Publish reviewed mobile conversion improvements",
+        "workers/triggered_by": "deployment"
+      },
+      "versions": [
+        {
+          "version_id": "5fa085d4-f1c8-4f51-8daa-71cdb7d90110",
+          "percentage": 100
+        }
+      ],
+      "created_on": "2026-09-17T05:22:17.324758Z"
+    },
+    {
       "id": "7b0b8513-d8bc-4824-95f1-8182ba5342c5",
       "source": "api",
       "strategy": "percentage",
@@ -134,38 +168,6 @@
         }
       ],
       "created_on": "2026-09-13T13:57:47.923082Z"
-    },
-    {
-      "id": "e606b511-4409-4b1a-b9aa-5f5c0bc416bd",
-      "source": "wrangler",
-      "strategy": "percentage",
-      "author_email": "shashanksingh4910@gmail.com",
-      "annotations": {
-        "workers/triggered_by": "deployment"
-      },
-      "versions": [
-        {
-          "version_id": "f61ca101-b297-4f59-bb79-5f5e0ffece4f",
-          "percentage": 100
-        }
-      ],
-      "created_on": "2026-09-13T13:53:48.960275Z"
-    },
-    {
-      "id": "5e89b80f-9022-40e5-b429-469a831ed5ed",
-      "source": "wrangler",
-      "strategy": "percentage",
-      "author_email": "shashanksingh4910@gmail.com",
-      "annotations": {
-        "workers/triggered_by": "secret"
-      },
-      "versions": [
-        {
-          "version_id": "fdc69baa-5a3c-45dd-b42e-69112aad374c",
-          "percentage": 100
-        }
-      ],
-      "created_on": "2026-09-13T12:55:42.228115Z"
     }
   ]
 }
